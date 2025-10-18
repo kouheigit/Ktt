@@ -22,6 +22,9 @@ RUN apt-get update \
     libzip-dev \
     libicu-dev \
     libonig-dev \
+    curl \
+  && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+  && apt-get install -y nodejs \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
   && locale-gen en_US.UTF-8 \
