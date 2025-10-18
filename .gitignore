@@ -36,6 +36,11 @@ docker-compose.override.yml
 作成手順/
 作成手順word/
 
+# TGMDK（機密情報のため除外）
+src/lib/tgmdk/tgMdk/
+src/lib/tgmdk/log/
+!src/lib/tgmdk/README.md
+
 # その他
 *.log
 *.tmp

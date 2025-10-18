@@ -22,3 +22,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+// TGMDK決済テスト（開発用）
+Route::prefix('payment/test')->group(function () {
+    Route::get('/', [App\Http\Controllers\PaymentTestController::class, 'index']);
+    Route::post('/authorize', [App\Http\Controllers\PaymentTestController::class, 'testAuthorize']);
+    Route::post('/capture', [App\Http\Controllers\PaymentTestController::class, 'testCapture']);
+    Route::post('/cancel', [App\Http\Controllers\PaymentTestController::class, 'testCancel']);
+    Route::post('/refund', [App\Http\Controllers\PaymentTestController::class, 'testRefund']);
+});
