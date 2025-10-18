@@ -1,0 +1,41 @@
+# Laravel
+src/node_modules
+src/npm-debug.log
+src/yarn-error.log
+src/public/hot
+src/public/storage
+src/storage/*.key
+src/vendor
+src/.env
+src/.env.backup
+src/.phpunit.result.cache
+src/Homestead.json
+src/Homestead.yaml
+src/auth.json
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# 作成手順書（機密情報のため除外）
+作成手順/
+作成手順word/
+
+# その他
+*.log
+*.tmp
