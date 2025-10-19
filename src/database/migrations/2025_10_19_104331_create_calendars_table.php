@@ -21,6 +21,7 @@ class CreateCalendarsTable extends Migration
             $table->date('start_date')->nullable()->comment('期間開始日');
             $table->date('end_date')->nullable()->comment('期間終了日');
             $table->integer('status')->default(1)->comment('1:予約可,2:予約中,3:予約済,9:休業');
+            
             //インデックス
             $table->index(['hotel_id','date']);
             $table->index(['user_id','start_date']);
