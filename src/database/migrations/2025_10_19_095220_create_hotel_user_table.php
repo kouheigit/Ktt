@@ -15,7 +15,12 @@ class CreateHotelUserTable extends Migration
     {
         Schema::create('hotel_user', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('hotel_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
+
+            // 複合ユニークキー
+            $table->unique(['hotel_id', 'user_id']);
         });
     }
 
