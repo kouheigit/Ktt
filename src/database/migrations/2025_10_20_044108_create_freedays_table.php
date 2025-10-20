@@ -19,7 +19,7 @@ class CreateFreedaysTable extends Migration
             $table->integer('freedays')->default(0)->comment('残り泊数');
             $table->date('start_date')->comment('利用開始日');
             $table->date('end_date')->comment('有効期限');
-            $table->integer('status')->comment('status')->default(1);
+            $table->integer('status')->default(1);
             $table->timestamps();
 
             $table->index(['user_id', 'end_date']);
