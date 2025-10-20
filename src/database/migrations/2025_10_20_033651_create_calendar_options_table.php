@@ -15,6 +15,11 @@ class CreateCalendarOptionsTable extends Migration
     {
         Schema::create('calendar_options', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('calendar_id')->constrained()->onDelete('cascade');
+            $table->string('title');
+            $table->text('body')->nullable();
+            $table->integer('sort')->default(0);
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
