@@ -35,7 +35,26 @@ class CreateReservationsTable extends Migration
             $table->integer('dog')->default(0)->comment('犬頭数');
             $table->text('note')->nullable()->comment('備考');
 
-        
+            // 施設情報
+            $table->string('room_key',50)->nullable()->comment('入室番号');
+            $table->string('upload')->nullable()->comment('アップロードファイル');
+
+            //決済,ステータス
+            $table->integer('payment')->default(0)->comment('0:現地払い, 1:クレジット');
+            $table->integer('status')->default(1)->comment('ステータス');
+            // 論理削除
+            $table->softDeletes();
+            $table->timestamps();
+           //インデックス
+            $table->index(['user_id','status']);
+            $table->index(['checkin_date','status']);
+            $table->index('owner_id');
+
+            // インデックス
+            $table->index(['user_id', 'status']);
+            $table->index(['checkin_date', 'status']);
+            $table->index('owner_id');
+            
         });
     }
 
