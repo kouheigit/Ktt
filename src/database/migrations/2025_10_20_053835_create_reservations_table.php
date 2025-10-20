@@ -15,7 +15,7 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            
+
             // 外部キー
             $table->foreignId('hotel_id')->constrained();
             $table->foreignId('user_id')->constrained()->comment('予約者');
@@ -44,7 +44,7 @@ class CreateReservationsTable extends Migration
             // 決済・ステータス
             $table->integer('payment')->default(0)->comment('0:現地払い, 1:クレジット');
             $table->integer('status')->default(1)->comment('ステータス');
-            
+
             // 論理削除
             $table->softDeletes();
             $table->timestamps();
