@@ -18,6 +18,7 @@ class CreateCalendarOptionsTable extends Migration
             $table->foreignId('calendar_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->text('body')->nullable();
+            //defaultは値がないと自動的にかっこ内の値を入れてくれる
             $table->integer('sort')->default(0);
             $table->integer('status')->default(1);
             $table->timestamps();
