@@ -53,4 +53,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // リレーション定義
+    public function hotels()
+    {
+        return $this->belongsToMany(Hotel::class);
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function userPoints()
+    {
+        return $this->hasMany(UserPoint::class);
+    }
 }
