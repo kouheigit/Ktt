@@ -33,8 +33,9 @@ class CreateCartItemsTable extends Migration
             $table->index(['service_id']);
             $table->index(['service_date']);
             
-            // 複合ユニークキー（同じサービス、同じ日時、同じオプションの重複を防ぐ）
-            $table->unique(['cart_id', 'service_id', 'service_date', 'service_time', 'options']);
+            // 複合ユニークキー（同じサービス、同じ日時の重複を防ぐ）
+            // JSON列はインデックス名が長くなりやすく、比較も重いため除外
+            $table->unique(['cart_id', 'service_id', 'service_date', 'service_time'], 'cart_items_unique_compact');
         });
     }
 

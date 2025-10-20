@@ -14,8 +14,16 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+
             // 会員ID
-            $table->string('member_id');
+            $table->string('member_id')->unique()->nullable();
             
             // 個人情報
             $table->string('last_name')->nullable();
@@ -50,7 +58,7 @@ class CreateUsersTable extends Migration
             $table->integer('type')->default(1)->comment('1:一般,2:オーナー');
             $table->integer('agree')->default(0)->comment('利用規約同意');
             $table->integer('status')->default(1)->comment('1:有効,0:無効');
-            $table->integer('user_id')->nullable()->comment('親ユーザーID(オーナーの場合)');
+            $table->foreignId('user_id')->nullable()->comment('親ユーザーID(オーナーの場合)');
 
             //論理削除
             $table->softDeletes();
@@ -64,16 +72,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn([
-                'member_id', 'last_name', 'first_name', 'last_kana', 'first_kana',
-                'zip1', 'zip2', 'address1', 'address2', 'tel',
-                'company_name', 'company_kana', 'company_zip1', 'company_zip2',
-                'company_address1', 'company_address2', 'company_tel', 'company_fax',
-                'send_name', 'send_kana', 'send_zip1', 'send_zip2',
-                'send_address1', 'send_address2', 'send_tel',
-                'type', 'agree', 'status', 'user_id', 'deleted_at'
-            ]);
-        });
+        Schema::dropIfExists('users');
     }
 }

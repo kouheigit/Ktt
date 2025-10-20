@@ -13,9 +13,7 @@ class AlterUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        // カラムは既にcreate_users_tableで作成済み
     }
 
     /**
@@ -25,8 +23,6 @@ class AlterUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        // カラムが存在しない場合があるため、down()は空にしておく
     }
 }
