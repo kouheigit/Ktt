@@ -9,5 +9,8 @@ use Carbon\Carbon;
 
 class FreedayService
 {
- 
+
 }
+
+
+

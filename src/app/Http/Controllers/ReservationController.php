@@ -16,7 +16,7 @@ use DB;
 use Carbon\Carbon;
 
 class ReservationController extends Controller
-{/*
+{
     private $freeday_service;
     public function __construct(FreedayService $freeday_service)
     {
@@ -45,5 +45,5 @@ class ReservationController extends Controller
             ])->orderBy('checkin_date','asc')->get();
 
         return view('reservation.index',compact('calendars','freedays','reservations'));
-    }*/
+    }
 }
