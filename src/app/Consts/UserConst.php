@@ -18,6 +18,14 @@ class UserConst
     const AGREE_CORP = 1;
     const AGREE_CORP_NAME = '法人';
 
+/*使い方
+@use(App\Consts\UserConst)
+{{-- その後は短く書ける --}}
+@foreach(UserConst::TYPE_LIST as $value => $label)
+    <option value="{{ $value }}">{{ $label }}</option>
+@endforeach
+*/
+
     const TYPE_LIST = [
         self::TYPE_OWNER => self::TYPE_OWNER_NAME,
         self::TYPE_FAMILY => self::TYPE_FAMILY_NAME,
