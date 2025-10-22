@@ -1,5 +1,4 @@
 <?php
-// app/Services/FreedayService.php
 
 namespace App\Services;
 
@@ -7,27 +6,30 @@ use App\Consts\UserConst;
 use App\Models\Freeday;
 use Carbon\Carbon;
 
+
 class FreedayService
 {
-    //フリーデイの情報の取得
+    //Freedayを取得
     public function getFreedays($user, $date = null)
     {
         $user_id = $user->id;
-        if($user->type ! = UserConst::TYPE_OWNER)
-        {
+        if ($user->type != UserConst::TYPE_OWNER) {
             $user_id = $user->user_id;
         }
-        if($date) {
+
+        if ($date) {
             $freedays = Freeday::where('user_id', $user_id)
-                ->where('stard_date', '<=', $date)
-                ->where('start_date', '>=', $date)
+                ->where('start_date', '<=', $date)
+                ->where('end_date', '>=', $date)
                 ->get();
-        }else {
-            $freedays = Freeday::where('user_id',$user_id)
+        } else {
+            $freedays = Freeday::where('user_id', $user_id)
                 ->get();
         }
+
+        return $freedays;
     }
-    //フリーデイが有効かどうか
+    //有効なFreedayを取得
     public function getEffectiveFreedays($user)
     {
         $user_id = $user->id;
@@ -41,15 +43,16 @@ class FreedayService
 
         return $freedays;
     }
-
-    public function getFreedaysNum($usr, $date = null)
+    //Freedayの有効な数を取得
+    public function getFreedaysNum($user, $date = null)
     {
         $user_id = $user->id;
-        if ($user->type != UserConst\::TYPE_OWNER) {
+        if ($user->type != UserConst::TYPE_OWNER) {
             $user_id = $user->user_id;
         }
+
         if ($date) {
-            $freedays = Freeday::where('user_id', UserConst::TYPE_OWNER)
+            $freedays = Freeday::where('user_id', $user_id)
                 ->where('start_date', '<=', $date)
                 ->where('end_date', '>=', $date)
                 ->get();
@@ -57,12 +60,15 @@ class FreedayService
             $freedays = Freeday::where('user_id', $user_id)
                 ->get();
         }
+
         $total_freedays = 0;
         foreach ($freedays as $freeday) {
-            $total_freedays += $freeday->freedays
+            $total_freedays += $freeday->freedays;
         }
+
         return $total_freedays;
     }
+    //Freedayの最大数を取得
     public function getMaxFreedaysNum($user, $date = null)
     {
         $user_id = $user->id;
@@ -87,18 +93,21 @@ class FreedayService
 
         return $total_max_freedays;
     }
+
+    //年間の最大Freeday数を取得
     public function getYearMaxFreedaysNum($user)
     {
         $user_id = $user->id;
-        if($user->type != UserConst::TYPE_OWNER) {
+        if ($user->type != UserConst::TYPE_OWNER) {
             $user_id = $user->user_id;
         }
-        $now Carbon::now();
-        $start_date = $now->copy()->firstOfYear();
-        $end_date= $now->copy()->lastOfYear();
 
-        $freedays = Freeday::where('user_id',$user_id)
-            ->whereBetween('start_date',[$start_date,$end_date])
+        $now = Carbon::now();
+        $start_date = $now->copy()->firstOfYear();
+        $end_date = $now->copy()->lastOfYear();
+
+        $freedays = Freeday::where('user_id', $user_id)
+            ->whereBetween('start_date', [$start_date, $end_date])
             ->get();
 
         $total_max_freedays = 0;
@@ -108,26 +117,23 @@ class FreedayService
 
         return $total_max_freedays;
     }
-    public function subFreedays($user,$date,$freedays)
+
+    //freedaysを減らす
+    public function subFreedays($user, $date, $freedays)
     {
         $user_id = $user->id;
-        if($user->type ! = UserConst::TYPE_OWNER){
+        if ($user->type != UserConst::TYPE_OWNER) {
             $user_id = $user->user_id;
         }
 
-        $freeday = Freeday::where('user_id',$user_id){
-            ->where('start_date','<=',$date)
-            ->where('end_date','>=',$date)
+        $freeday = Freeday::where('user_id', $user_id)
+            ->where('start_date', '<=', $date)
+            ->where('end_date', '>=', $date)
             ->first();
-        }
-        if($freeday){
+
+        if ($freeday) {
             $freeday->freedays = $freeday->freedays - $freedays;
             $freeday->save();
         }
     }
-
 }
-
-
-
-
