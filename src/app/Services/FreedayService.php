@@ -18,7 +18,17 @@ class FreedayService
         {
             $user_id = $user->user_id;
         }
-       
+        if($date) {
+            $freedays = Freeday::where('user_id', $user_id)
+                ->where('stard_date', '<=', $date)
+                ->where('start_date', '>=', $date)
+                ->get();
+        }else {
+            $freedays = Freeday::where('user_id',$user_id)
+                ->get();
+        }
+    }
+
     }
 }
 
