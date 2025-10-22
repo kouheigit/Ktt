@@ -10,7 +10,7 @@ class UserConst
     const TYPE_FAMILY = 1;
     const TYPE_FAMILY_NAME = "ご家族";
     const TYPE_FRIEND = 2;
-    const TYEPE_FRIEND_NAME = "お友達";
+    const TYPE_FRIEND_NAME = "お友達";
     const TYPE_INVITATION = 3;
     const TYPE_INVITATION_NAME = 'INVITATION';
 
@@ -20,9 +20,28 @@ class UserConst
     const AGREE_CORP_NAME = '法人';
 
     const TYPE_LIST = [
-
+        self::TYPE_OWNER => self::TYPE_OWNER_NAME,
+        self::TYPE_FAMILY => self::TYPE_FAMILY_NAME,
+        self::TYPE_FRIEND => self::TYPE_FRIEND_NAME,
+        self::TYPE_INVITATION =>self::TYPE_INVITATION_NAME
+    ];
+    const AGREE_LIST = [
+        self::AGREE_PRIVATE =>self::AGREE_PRIVATE_NAME,
+        self::AGREE_CORP=>self::AGREE_CORP_NAME,
     ];
 
-
 }
+/*
 
+    const TYPE_LIST = [
+        self::TYPE_OWNER => self::TYPE_OWNER_NAME,
+        self::TYPE_FAMILY => self::TYPE_FAMILY_NAME,
+        self::TYPE_FRIEND => self::TYPE_FRIEND_NAME,
+        self::TYPE_INVITATION => self::TYPE_INVITATION_NAME,
+    ];
+
+    const AGREE_LIST = [
+        self::AGREE_PRIVATE => self::AGREE_PRIVATE_NAME,
+        self::AGREE_CORP => self::AGREE_CORP_NAME,
+    ];
+}*/
