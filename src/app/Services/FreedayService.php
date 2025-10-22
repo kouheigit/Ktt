@@ -89,9 +89,29 @@ class FreedayService
 
         return $total_max_freedays;
     }
+    public function getYearMaxFreedaysNum($user)
+    {
+        $user_id = $user->id;
+        if($user->type != UserConst::TYPE_OWNER) {
+            $user_id = $user->user_id;
+        }
+        $now Carbon::now();
+        $start_date = $now->copy()->firstOfYear();
+        $end_date= $now->copy()->lastOfYear();
 
+        $freedays = Freeday::where('user_id',$user_id)
+            ->whereBetween('start_date',[$start_date,$end_date])
+            ->get();
+
+        $total_max_freedays = 0;
+        foreach ($freedays as $freeday) {
+            $total_max_freedays += $freeday->max_freedays;
+        }
+
+        return $total_max_freedays;
+    }
     /*
-
+     * 
      */
 }
 
