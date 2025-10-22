@@ -3,10 +3,8 @@
 
 namespace App\Services;
 
-
 use App\Consts\UserConst;
 use App\Models\Freeday;
-use App\Models\User;
 use Carbon\Carbon;
 
 class FreedayService
@@ -110,9 +108,24 @@ class FreedayService
 
         return $total_max_freedays;
     }
-    /*
-     * 
-     */
+    public function subFreedays($user,$date,$freedays)
+    {
+        $user_id = $user->id;
+        if($user->type ! = UserConst::TYPE_OWNER){
+            $user_id = $user->user_id;
+        }
+
+        $freeday = Freeday::where('user_id',$user_id){
+            ->where('start_date','<=',$date)
+            ->where('end_date','>=',$date)
+            ->first();
+        }
+        if($freeday){
+            $freeday->freedays = $freeday->freedays - $freedays;
+            $freeday->save();
+        }
+    }
+
 }
 
 
