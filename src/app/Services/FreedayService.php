@@ -65,6 +65,34 @@ class FreedayService
         }
         return $total_freedays;
     }
+    public function getMaxFreedaysNum($user, $date = null)
+    {
+        $user_id = $user->id;
+        if ($user->type != UserConst::TYPE_OWNER) {
+            $user_id = $user->user_id;
+        }
+
+        if ($date) {
+            $freedays = Freeday::where('user_id', $user_id)
+                ->where('start_date', '<=', $date)
+                ->where('end_date', '>=', $date)
+                ->get();
+        } else {
+            $freedays = Freeday::where('user_id', $user_id)
+                ->get();
+        }
+
+        $total_max_freedays = 0;
+        foreach ($freedays as $freeday) {
+            $total_max_freedays += $freeday->max_freedays;
+        }
+
+        return $total_max_freedays;
+    }
+
+    /*
+
+     */
 }
 
 
