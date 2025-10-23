@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Consts;
-
+//UserConst
 class UserConst
 {
     const TYPE_OWNER = 0;
