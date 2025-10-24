@@ -14,15 +14,9 @@ class ServiceConst
         self::TYPE_PREORDER => self::TYPE_PREORDER_NAME,
     ];
 
-    /*
-        const TYPE_LIST = [
-        self::TYPE_SAMEDAY => self::TYPE_SAMEDAY_NAME,
-        self::TYPE_PREORDER => self::TYPE_PREORDER_NAME,
-    ];
-
     const STATUS_NOT_ACCEPTED = 0;
-    const STATUS_NOT_ACCEPTED_NAME = '予約不可';
+    const STATUS_NOT_ACCEPTED_NAME= '予約不可';
     const STATUS_APPLYING = 1;
     const STATUS_APPLYING_NAME = '予約可能';
-     */
+   
 }
