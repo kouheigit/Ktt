@@ -26,23 +26,4 @@ class NewsConst
         self::STATUS_HIDDEN => self::STATUS_HIDDEN_NAME,
         self::STATUS_SHOW => self::STATUS_SHOW_NAME,
     ];
-
-
-    const TAB_1 = 0;
-    const TAB_1_NAME = '事前予約のお料理';
-    const TAB_2 = 1;
-    const TAB_2_NAME = '事前予約のサービス';
-    const TAB_3 = 2;
-    const TAB_3_NAME = 'ご利用当日のサービス';
-    const TAB_4 = 3;
-    const TAB_4_NAME = '付帯サービス';
-
-
-    const TAB_LIST = [
-        self::TAB_1 => self::TAB_1_NAME,
-        self::TAB_2 => self::TAB_2_NAME,
-        self::TAB_3 => self::TAB_3_NAME,
-        self::TAB_4 => self::TAB_4_NAME,
-    ];
-
 }
