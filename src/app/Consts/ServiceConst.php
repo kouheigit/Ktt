@@ -2,6 +2,7 @@
 
 namespace App\Consts;
 
-class NewsConst
+class ServiceConst
 {
+
 }
