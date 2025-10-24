@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Consts;
-//UserConst
+//UserConst.php - ユーザー関連の定数
 class UserConst
 {
     const TYPE_OWNER = 0;
