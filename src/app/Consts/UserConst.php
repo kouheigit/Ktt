@@ -25,7 +25,7 @@ class UserConst
  <option value="{{ $value }}">{{ $label }}</option>
 @endforeach
      */
-    
+
     const TYPE_LIST = [
         self::TYPE_OWNER => self::TYPE_OWNER_NAME,
         self::TYPE_FAMILY => self::TYPE_FAMILY_NAME,
