@@ -24,4 +24,6 @@ class ServiceConst
         self::STATUS_APPLYING=>self::STATUS_APPLYING_NAME,
     ];
 
+
+
 }

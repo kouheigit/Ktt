@@ -37,4 +37,12 @@ class NewsConst
     const TAB_4 = 3;
     const TAB_4_NAME = '付帯サービス';
 
+
+    const TAB_LIST = [
+        self::TAB_1 => self::TAB_1_NAME,
+        self::TAB_2 => self::TAB_2_NAME,
+        self::TAB_3 => self::TAB_3_NAME,
+        self::TAB_4 => self::TAB_4_NAME,
+    ];
+
 }
