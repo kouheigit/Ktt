@@ -22,21 +22,19 @@ class OrderConst
     const STATUS_CANCELED_NAME = 'キャンセル';
 
     const STATUS_LIST = [
-        self::STATUS_ORDER =>  self::STATUS_ORDER_NAME,
+        self::STATUS_ORDER => self::STATUS_ORDER_NAME,
         self::STATUS_RESERVED => self::STATUS_RESERVED_NAME,
         self::STATUS_CANCELED => self::STATUS_CANCELED_NAME,
-
     ];
     const PAYMENT_OWNER = 0;
     const PAYMENT_OWNER_NAME = 'オーナーにまとめて請求';
-    const PAYMENT_OTHER =1;
-    const PAYMENT_OTHER_NAME ='クレジットカードで都度支払';
+    const PAYMENT_OTHER = 1;
+    const PAYMENT_OTHER_NAME = 'クレジットカードで都度支払';
 
     const PAYMENT_LIST = [
         self::PAYMENT_OWNER => self::PAYMENT_OWNER_NAME,
         self::PAYMENT_OTHER => self::PAYMENT_OTHER_NAME,
     ];
-
 
     const PAYMENT_STATUS_UNPAID = 0;
     const PAYMENT_STATUS_UNPAID_NAME = '未決済';
@@ -49,8 +47,8 @@ class OrderConst
 
     const PAYMENT_STATUS_LIST = [
         self::PAYMENT_STATUS_UNPAID => self::PAYMENT_STATUS_UNPAID_NAME,
-        self::PAYMENT_STATUS_PAID=>self::PAYMENT_STATUS_PAID_NAME,
-        self::PAYMENT_STATUS_CANCELED =>  self::PAYMENT_STATUS_CANCELED_NAME,
+        self::PAYMENT_STATUS_PAID => self::PAYMENT_STATUS_PAID_NAME,
+        self::PAYMENT_STATUS_CANCELED => self::PAYMENT_STATUS_CANCELED_NAME,
         self::PAYMENT_STATUS_ERROR => self::PAYMENT_STATUS_ERROR_NAME,
     ];
 }
