@@ -18,5 +18,10 @@ class ServiceConst
     const STATUS_NOT_ACCEPTED_NAME= '予約不可';
     const STATUS_APPLYING = 1;
     const STATUS_APPLYING_NAME = '予約可能';
-   
+
+    const STATUS_LIST = [
+        self::STATUS_NOT_ACCEPTED => self::STATUS_NOT_ACCEPTED_NAME,
+        self::STATUS_APPLYING=>self::STATUS_APPLYING_NAME,
+    ];
+
 }
