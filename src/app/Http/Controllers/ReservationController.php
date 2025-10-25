@@ -110,8 +110,20 @@ class ReservationController extends Controller
             $price += $option->price;
         }
 
+        // 一時保存
+        TmpOrderDetail::create([
+            'user_id' => Auth::id(),
+            'service_id' => $service->id,
+            'service_option_id' => $request->service_option_id,
+            'price' => $price,
+            'quantity' => $request->quantity,
+            'total_price' => $price * $request->quantity,
+            'type' => 1,
+        ]);
+
+        return redirect()->route('reservation.cart');
+
     }
-   
 
 }
 
