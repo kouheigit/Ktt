@@ -124,6 +124,33 @@ class ReservationController extends Controller
         return redirect()->route('reservation.cart');
 
     }
+    public function cart(Request $request)
+    {
+      $user = Auth::user();
+      $reservation_data = session('reservation_data');
+
+      $tmp_orders = TmpOrderDetail::where('user_id',$user->id)
+          ->with(['service','serviceOption'])
+          ->get();
+
+      $total_price = $tmp_orders->sum('total_price');
+
+      return view('reservation.cart',compact('tmp_orders','total_price','reservation_data'));
+
+    }
+    public function cart_delete(TmpOrderDetail $tmp_order_detail)
+    {
+        if ($tmp_order_detail->user_id != Auth::id()) {
+            abort(403);
+        }
+        $tmp_order_detail->delete();
+
+        return redirect()->route('reservation.cart');
+    }
+
+    /*
+
+     */
 
 }
 
