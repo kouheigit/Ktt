@@ -14,7 +14,12 @@ use Auth;
 use DB;
 use Carbon\Carbon;
 
-class ReservationController extends Controller{
-
+class ReservationController extends Controller
+{
+    private $freeday_service;
+    public function __construct(FreedayService $freeday_service)
+    {
+        $this->freeday_service = $freeday_service;
+    }
 }
 
