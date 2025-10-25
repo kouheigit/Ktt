@@ -91,9 +91,27 @@ class ReservationController extends Controller
 
         return view('reservation.service', compact('services', 'tmp_orders', 'reservation_data'));
     }
-    /*
-    
-     */
+    public function cart_add(Request $request)
+    {
+        $validate = $request->validate([
+            'service_id'=>'required|exists:services,id',
+            'service_option_id'=>'nullable|exists:service_options,id',
+            'quantity'=> 'required|integer|min:1',
+        ]);
+        $service = Service::findOrFail($request->service_id);
+
+        if($service->stock > 0 && $service->stock < $request->quantity) {
+            return back()->withErrors(['quantity' => '在庫が不足しています']);
+        }
+
+        $price = $service->price;
+        if($request->service_option_id){
+            $option = ServiceOption::findOrFail($request->service_option_id);
+            $price += $option->price;
+        }
+
+    }
+   
 
 }
 
